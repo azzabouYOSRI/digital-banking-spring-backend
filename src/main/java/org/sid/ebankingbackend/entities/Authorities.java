@@ -21,6 +21,11 @@ public class Authorities {
     @Column(name = "username", nullable = false)
     private String username;
 
+    @Column(name = "authority", nullable = false)
+    private String authority;
 
+    @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
+    @JoinColumn(name = "users_id", nullable = false)
+    private Users users;
 
 }

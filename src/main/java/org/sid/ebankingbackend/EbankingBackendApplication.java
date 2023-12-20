@@ -10,6 +10,8 @@ import org.sid.ebankingbackend.enums.OperationType;
 import org.sid.ebankingbackend.exceptions.BalanceNotSufficientException;
 import org.sid.ebankingbackend.exceptions.BankAccountNotFoundException;
 import org.sid.ebankingbackend.exceptions.CustomerNotFoundException;
+import org.sid.ebankingbackend.registration.RegistrationRequest;
+import org.sid.ebankingbackend.registration.RegistrationServiceImpl;
 import org.sid.ebankingbackend.repositories.AccountOperationRepository;
 import org.sid.ebankingbackend.repositories.BankAccountRepository;
 import org.sid.ebankingbackend.repositories.CustomerRepository;
@@ -32,8 +34,23 @@ public class EbankingBackendApplication {
     public static void main(String[] args) {
         SpringApplication.run(EbankingBackendApplication.class, args);
     }
-//    @Bean
-//    CommandLineRunner commandLineRunner(BankAccountService bankAccountService){
+
+    @Bean
+  CommandLineRunner commandLineRunner(RegistrationServiceImpl registrationService) {
+        return args -> {
+            // Example registration request
+            RegistrationRequest registrationRequest = new RegistrationRequest();
+            registrationRequest.setUsername("john.doe");
+            registrationRequest.setPassword("password123");
+
+            // Call the registration service to register the user
+            registrationService.registerUser(registrationRequest);
+
+            // You can add more logic or print statements if needed
+            System.out.println("CommandLineRunner executed successfully.");
+        };
+    }
+}
 //        return args -> {
 //           Stream.of("Hassan","Imane","Mohamed").forEach(name->{
 //               CustomerDTO customer=new CustomerDTO();
@@ -111,4 +128,4 @@ public class EbankingBackendApplication {
 //
 //    }
 
-}
+
