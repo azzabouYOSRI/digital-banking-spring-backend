@@ -21,13 +21,15 @@ public class Users {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "username", nullable = false)
+    private String name;
+
+    @Column(name = "username")
     private String username;
 
-     @Column(name = "password", nullable = false)
+     @Column(name = "password")
     private String password;
 
-    @Column(name = "enabled", nullable = false)
+    @Column(name = "enabled")
     private Boolean enabled = false;
 
     @OneToMany(mappedBy = "users", orphanRemoval = true)

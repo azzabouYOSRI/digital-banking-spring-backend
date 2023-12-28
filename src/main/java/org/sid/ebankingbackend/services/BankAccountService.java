@@ -11,10 +11,10 @@ import org.sid.ebankingbackend.exceptions.CustomerNotFoundException;
 
 import java.util.List;
 public interface BankAccountService {
-    CustomerDTO saveCustomer(CustomerDTO customerDTO);
-    CurrentBankAccountDTO saveCurrentBankAccount(double initialBalance, double overDraft, Long customerId) throws CustomerNotFoundException;
+    CustomerDTO saveCustomer(CustomerDTO customerDTO) throws Exception;
+    CurrentBankAccountDTO saveCurrentBankAccount(double initialBalance, double overDraft, Long customerId) throws Exception;
     SavingBankAccountDTO saveSavingBankAccount(double initialBalance, double interestRate, Long customerId) throws CustomerNotFoundException;
-    List<CustomerDTO> listCustomers();
+    List<CustomerDTO> listCustomers() throws Exception;
     BankAccountDTO getBankAccount(String accountId) throws BankAccountNotFoundException;
     void debit(String accountId, double amount, String description) throws BankAccountNotFoundException, BalanceNotSufficientException;
     void credit(String accountId, double amount, String description) throws BankAccountNotFoundException;

@@ -19,7 +19,7 @@ public class CustomerRestController {
     private BankAccountService bankAccountService;
     @GetMapping("/customers")
     @PreAuthorize("hasAuthority('SCOPE_USER')")
-    public List<CustomerDTO> customers(){
+    public List<CustomerDTO> customers() throws Exception {
         return bankAccountService.listCustomers();
     }
     @GetMapping("/customers/search")
@@ -34,7 +34,7 @@ public class CustomerRestController {
     }
     @PostMapping("/customers")
         @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
-    public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO){
+    public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO) throws Exception {
         return bankAccountService.saveCustomer(customerDTO);
     }
     @PutMapping("/customers/{customerId}")
